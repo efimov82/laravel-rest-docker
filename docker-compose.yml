@@ -1,0 +1,30 @@
+version: '2'
+services:
+  php:
+    build: ./images/php
+    links:
+      - mysql
+    container_name: php-common
+  nginx:
+    container_name: nginx-common
+    image: nginx:latest
+    ports:
+      - "8000:80"
+      - "4433:443"
+    volumes:
+      - ./hosts:/etc/nginx/conf.d:ro
+      - ./application:/var/www/laravel-rest.dev
+      - ./logs:/var/log/nginx
+    links:
+      - php
+  mysql:
+    image: mysql:5.7
+    ports:
+        - "3307:3306"
+    volumes:
+        - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_DATABASE: laravel-rest-db
+      MYSQL_USER: laravel-user
+      MYSQL_PASSWORD: 123456789
