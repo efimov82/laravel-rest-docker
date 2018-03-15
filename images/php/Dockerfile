@@ -19,9 +19,4 @@ ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 WORKDIR /var/www
 CMD ["php-fpm"]
 
-# Init App
-WORKDIR /var/www/laravel-rest.dev
-
-CMD ["composer install && php artisan migrate && php artisan db:seed"]
-
-CMD ["php artisan docs:generate"]
+CMD ["./application/setup.sh"]

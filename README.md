@@ -24,7 +24,7 @@ docker-compose down --volumes
 
 
 Add `laravel-rest.dev` to /ets/hosts file being linked to docker local ip.
-Visit http://demo.dev in browser , after you added in hosts
+Visit http://laravel-rest.dev in browser , after you added in hosts
 
 ```
 127.0.0.1   laravel-rest.dev
